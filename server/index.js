@@ -175,10 +175,9 @@ app.put('/user/:id', authenticateToken, (req, res) => {
 });
 
 // Delete User
-app.delete('/user/:id', authenticateToken, (req, res) => {
-  const userId = req.params.id;
-
-  if (req.user.isAdmin || userId === req.user.id) {
+app.delete('/user/:id', authenticateToken, requireAdmin, (req, res) => {
+    const userId = req.params.id;
+  
     db.query('DELETE FROM Users WHERE id = ?', userId, (error, result) => {
       if (error) {
         console.log(error);
@@ -187,22 +186,26 @@ app.delete('/user/:id', authenticateToken, (req, res) => {
         res.sendStatus(200);
       }
     });
-  } else {
-    res.status(403).json({ error: 'Unauthorized access' });
-  }
-});
+  });
+  
+
 
 // Get All Users (Admin Only)
 app.get('/users', authenticateToken, requireAdmin, (req, res) => {
-  db.query('SELECT * FROM Users', (error, users) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.json(users);
-    }
+    const adminUserId = req.user.id;
+  
+    db.query('SELECT * FROM Users', (error, users) => {
+      if (error) {
+        console.log(error);
+        res.sendStatus(500);
+      } else {
+        const filteredUsers = users.filter((user) => user.id !== adminUserId);
+        res.json(filteredUsers);
+      }
+    });
   });
-});
+  
+  
 
 // Authentication Middleware
 function authenticateToken(req, res, next) {
