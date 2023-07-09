@@ -130,7 +130,7 @@ app.get('/user', authenticateToken, (req, res) => {
 
 // Update User
 app.put('/user/:id', authenticateToken, (req, res) => {
-  const userId = req.params.id;
+  const userId = req.user.id;
   const { name, BTC_receive_address, amountToSpend, phoneNum, password } = req.body;
 
   if (req.user.isAdmin || userId === req.user.id) {
