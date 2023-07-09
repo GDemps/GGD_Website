@@ -23,11 +23,12 @@ const EditUserPage = () => {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      setUser(response.data);
-      setName(response.data.name);
-      setBTCReceiveAddress(response.data.BTC_receive_address);
-      setAmountToSpend(response.data.amountToSpend);
-      setPhoneNum(response.data.phoneNum);
+      const userData = response.data;
+      setUser(userData);
+      setName(userData.name);
+      setBTCReceiveAddress(userData.BTC_receive_address);
+      setAmountToSpend(userData.amountToSpend);
+      setPhoneNum(userData.phoneNum);
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +37,7 @@ const EditUserPage = () => {
   const handleUpdateUser = async () => {
     try {
       await axios.put(
-        `http://localhost:3001/user/${id}`, // Updated endpoint URL
+        `http://localhost:3001/user/${id}`,
         {
           name,
           BTC_receive_address: BTCReceiveAddress,
@@ -90,6 +91,7 @@ const EditUserPage = () => {
 };
 
 export default EditUserPage;
+
 
 
 
