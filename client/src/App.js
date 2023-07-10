@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import UserPage from './pages/UserPage';
 import EditUserPage from './pages/EditUserPage';
 import RegistrationPage from './pages/RegistrationPage';
+import BitcoinPage from './pages/BitcoinPage';
 import Header from './components/Header';
 
 const NotFoundPage = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/user/:id/edit" element={<EditUserPage />} />
+          <Route path="/bitcoin" element={<BitcoinPage />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </div>
@@ -30,6 +32,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 

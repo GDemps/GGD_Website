@@ -45,6 +45,9 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
+            <Link to="/bitcoin">Bitcoin</Link>
+          </li>
+          <li>
             <Link to="/user">User</Link>
           </li>
           {renderAuthButtons()}

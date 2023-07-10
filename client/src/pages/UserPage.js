@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
 const UserPage = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
@@ -20,7 +21,7 @@ const UserPage = () => {
       })
       .then((response) => {
         setUser(response.data);
-        fetchUsersList(); // Call fetchUsersList after setting the user state
+        fetchUsersList();
       })
       .catch((error) => {
         console.log(error);
@@ -43,7 +44,6 @@ const UserPage = () => {
         console.log(error);
       });
   };
-  
 
   const handleEditProfile = () => {
     navigate(`/user/${user.id}/edit`);
@@ -89,24 +89,33 @@ const UserPage = () => {
       <button onClick={handleEditProfile}>Edit Profile</button>
       <button onClick={handleDeleteProfile}>Delete Profile</button>
 
-      <h2>All Users</h2>
-      <ul>
-        {usersList.map((u) => (
-          <li key={u.id}>
-            <p>Name: {u.name}</p>
-            <p>BTC Receive Address: {u.BTC_receive_address}</p>
-            <p>Amount To Spend: {u.amountToSpend}</p>
-            <p>Phone Number: {u.phoneNum}</p>
-            <button onClick={() => navigate(`/user/${u.id}/edit`)}>Edit</button>
-            <button onClick={() => handleDeleteUser(u.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+      {usersList.length > 0 && (
+        <>
+          <h2>All Users</h2>
+          <ul>
+            {usersList.map((u) => (
+              <li key={u.id}>
+                <p>Name: {u.name}</p>
+                <p>BTC Receive Address: {u.BTC_receive_address}</p>
+                <p>Amount To Spend: {u.amountToSpend}</p>
+                <p>Phone Number: {u.phoneNum}</p>
+                <button onClick={() => navigate(`/user/${u.id}/edit`)}>Edit</button>
+                <button onClick={() => handleDeleteUser(u.id)}>Delete</button>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </div>
   );
 };
 
 export default UserPage;
+
+
+
+
+
 
 
 
