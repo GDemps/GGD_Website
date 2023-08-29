@@ -22,6 +22,11 @@ app.listen(3001, () => {
   console.log('Running on port 3001');
 });
 
+// Get Bitcoin Page
+app.get('/bitcoin', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/src/pages/BitcoinPage.js'));
+});
+
 const saltRounds = 10;
 const jwtSecret = process.env.SEC_KEY; // remember to keep this secret
 

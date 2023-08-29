@@ -1,54 +1,45 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import '../App.css';
 
 const Header = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Clear user authentication data (e.g., tokens, session storage)
     localStorage.removeItem('token');
-
-    // Redirect to the login page
     navigate('/login');
   };
 
   const renderAuthButtons = () => {
-    // Check if the user is authenticated (e.g., token is present)
     const isAuthenticated = !!localStorage.getItem('token');
 
     if (isAuthenticated) {
-      // User is logged in
       return (
-        <>
-          <li>
-            <button onClick={handleLogout}>Logout</button>
-          </li>
-        </>
+        <li className="nav-list-item">
+          <button onClick={handleLogout} className="nav-link">Logout</button>
+        </li>
       );
     } else {
-      // User is logged out
       return (
-        <>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </>
+        <li className="nav-list-item">
+          <Link to="/login" className="nav-link">Login</Link>
+        </li>
       );
     }
   };
 
   return (
-    <header>
+    <header className="header">
       <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
+        <ul className="nav-list">
+          <li className="nav-list-item">
+            <Link to="/" className="nav-link">Home</Link>
           </li>
-          <li>
-            <Link to="/bitcoin">Bitcoin</Link>
+          <li className="nav-list-item">
+            <Link to="/bitcoin" className="nav-link">Bitcoin</Link>
           </li>
-          <li>
-            <Link to="/user">User</Link>
+          <li className="nav-list-item">
+            <Link to="/user" className="nav-link">User</Link>
           </li>
           {renderAuthButtons()}
         </ul>
@@ -58,4 +49,5 @@ const Header = () => {
 };
 
 export default Header;
+
 
