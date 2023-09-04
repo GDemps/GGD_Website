@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import logo from '../Bitcoin_eye.jpeg'; // Import your logo image
 import '../App.css';
 
 const Header = () => {
@@ -31,23 +32,26 @@ const Header = () => {
   return (
     <header className="header">
       <nav>
-        <ul className="nav-list">
-          <li className="nav-list-item">
-            <Link to="/" className="nav-link">Home</Link>
-          </li>
-          <li className="nav-list-item">
-            <Link to="/bitcoin" className="nav-link">Bitcoin</Link>
-          </li>
-          <li className="nav-list-item">
-            <Link to="/user" className="nav-link">User</Link>
-          </li>
-          {renderAuthButtons()}
-        </ul>
+        <div className="header-content">
+          <div className="logo">
+            <img src={logo} alt="Logo" className="logo-image" />
+          </div>
+          <ul className="nav-list">
+            <li className="nav-list-item">
+              <Link to="/" className="nav-link">Home</Link>
+            </li>
+            <li className="nav-list-item">
+              <Link to="/bitcoin" className="nav-link">Bitcoin</Link>
+            </li>
+            <li className="nav-list-item">
+              <Link to="/user" className="nav-link">User</Link>
+            </li>
+            {renderAuthButtons()}
+          </ul>
+        </div>
       </nav>
     </header>
   );
 };
 
 export default Header;
-
-
