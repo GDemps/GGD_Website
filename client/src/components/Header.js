@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../Bitcoin_eye.jpeg'; // Import your logo image
+import logo from '../GGD_LLC.png'; // Import your logo image
 import '../App.css';
 
 const Header = () => {

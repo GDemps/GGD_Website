@@ -1,22 +1,9 @@
-/* App.css */
+/* Header.css */
 
-/* Header */
 .header {
   background-color: blue;
-  padding: 5px 0;
+  padding: 10px 0;
   text-align: center;
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo-image,
-.banner-image {
-  height: 100px; /* Adjust the height as needed */
-  object-fit: contain;
 }
 
 .nav-list {
@@ -33,13 +20,32 @@
   text-decoration: none;
   color: white;
   background-color: darkblue;
-  padding: 5px 15px;
+  padding: 10px 15px;
   border-radius: 5px;
   transition: background-color 0.3s;
 }
 
 .nav-link:hover {
-  background-color: navy;
+  background-color: rgb(18, 242, 82);
+}
+
+
+.header {
+  background-color: blue;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.header-content {
+  display: flex;
+  align-items: right;
+  justify-content: space-between;
+}
+
+.logo-image,
+.another-image {
+  height: 200px; /* Set the desired fixed height */
+  object-fit: contain; /* Maintain aspect ratio while fitting the content */
 }
 
 
@@ -71,20 +77,9 @@
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 30px;
+  right: 30px;
   background-color: transparent;
   border: none;
   cursor: pointer;
-}
-
-/* Banner */
-.banner {
-  text-align: center;
-  background-color: lightgray;
-}
-
-.banner-image {
-  max-width: 100%;
-  height: auto;
 }

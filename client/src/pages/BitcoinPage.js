@@ -41,7 +41,6 @@ const BitcoinPage = () => {
         <h2>What is Bitcoin?</h2>
         <video
           src={videoSource}
-          autoPlay
           controls // Add controls to allow users to play/pause and adjust volume
           style={{ width: '50%', height: '50%' }}
         />
